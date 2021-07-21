@@ -9,28 +9,23 @@
       function setup(){
         createCanvas(400,400);
         
-        ship = createSprite(50,160,20,50);
-        ship.addAnimation("sailing",ship_sailing);
-        sea = createSprite(200,200,50,50);
-        sea.addImage(seaImg);
-        edges = createEdgeSprites();
-        ship.scale = 0.5;
+      sea = createSprite(400,200);
+      sea.addImage(seaImg);
+      sea.velocityX = -5;
+      sea.scale = 0.3;
 
-
+      ship =createSprite(130,200,30,30);
+      ship.addAnimation("ship_sailing",ship_sailing);
+      ship.scale = 0.25;
       }
 
       function draw() {
         background("blue");
+      sea.velocityX = -3;
+
+      if(sea.x < 0){
+        sea.X = sea.width/8
+      }
       
-        console.log("ship sailing");
-        console.log(ship.y);
-
-        if(keyIsDown(LEFT_ARROW)){
-          ship.velocityX = 2;
-        }
-        
-      ship.velocityX = ship.velocityX + 0.5;
-
-      ship.collide(edges[3]);
       drawSprites();
       }
